@@ -289,7 +289,7 @@ def main():
     trainer = Trainer.from_argparse_args(
         args,
         logger=wandb_logger if args.wandb else None,
-        callbacks=callbacks,
+        # callbacks=callbacks, # PyTorch Lightningの新バージョンに対応
         checkpoint_callback=False,
         terminate_on_nan=True,
     )
