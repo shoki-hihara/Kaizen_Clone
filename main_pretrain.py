@@ -290,8 +290,8 @@ def main():
         args,
         logger=wandb_logger if args.wandb else None,
         callbacks=callbacks,
-        checkpoint_callback=False,
-        terminate_on_nan=True,
+        # checkpoint_callback=False,
+        # terminate_on_nan=True,
     )
 
     model.current_task_idx = args.task_idx
