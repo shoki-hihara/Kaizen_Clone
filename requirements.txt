@@ -1,5 +1,5 @@
-# torch==1.10
-torch
+torch==1.10
+# torch
 torchvision
 pytorch-lightning==1.7.0
 lightning-bolts
