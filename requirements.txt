@@ -7,3 +7,4 @@ wandb
 scikit-learn
 einops
 torchaudio
+torchmetrics
