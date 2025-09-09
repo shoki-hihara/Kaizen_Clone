@@ -290,7 +290,7 @@ def main():
         args,
         logger=wandb_logger if args.wandb else None,
         callbacks=callbacks,
-        # checkpoint_callback=False,　# PyTorch Lightningの新バージョンに対応
+        checkpoint_callback=False,
         terminate_on_nan=True,
     )
 
