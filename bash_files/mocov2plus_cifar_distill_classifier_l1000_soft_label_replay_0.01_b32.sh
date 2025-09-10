@@ -28,7 +28,6 @@ python3 main_continual.py \
     --name cifar100-mocov2plus-contrastive-distill-classifier-l1000-soft-label-replay-0.01-b32 \
     --project Kaizen \
     --entity crazy-sonnet \
-    # --offline \
     --wandb \
     --save_checkpoint \
     --output_dim 256 \
