@@ -27,7 +27,7 @@ python3 main_continual.py \
     --solarization_prob 0.0 0.2 \
     --name cifar100-mocov2plus-contrastive-distill-classifier-l1000-soft-label-replay-0.01-b32 \
     --project Kaizen \
-    --entity crazy-sonnet \
+    --entity crazy-sonnet-ambl \
     --wandb \
     --save_checkpoint \
     --output_dim 256 \
