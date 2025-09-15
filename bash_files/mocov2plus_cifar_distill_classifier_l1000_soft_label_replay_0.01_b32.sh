@@ -53,4 +53,5 @@ python3 main_continual.py \
     --replay_proportion 0.01 \
     --replay_batch_size 32 \
     --online_evaluation True \
+    --checkpoint_dir "/content/drive/MyDrive/学習/大学院/特別研究/HAR/Kaizen/log" \
     --online_evaluation_training_data_source seen_tasks
