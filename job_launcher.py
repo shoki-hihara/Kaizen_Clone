@@ -2,10 +2,7 @@ import sys
 import os
 import subprocess
 import argparse
-from datetime import datetime
-import inspect
 import shutil
-
 
 from main_continual import str_to_dict
 
@@ -13,11 +10,12 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--script", type=str, required=True)
 parser.add_argument("--mode", type=str, default="normal")
 parser.add_argument("--experiment_dir", type=str, default=None)
-parser.add_argument("--base_experiment_dir", type=str, default="./experiments")
+parser.add_argument("--base_experiment_dir", type=str, default=None)  # ここは使わない
 parser.add_argument("--gpu", type=str, default="v100-16g")
 parser.add_argument("--num_gpus", type=int, default=2)
 parser.add_argument("--hours", type=int, default=20)
 parser.add_argument("--requeue", type=int, default=0)
+parser.add_argument("--checkpoint_root_dir", type=str, default="/content/drive/MyDrive/学習/大学院/特別研究/HAR/Kaizen/log")  # 新規追加
 
 args = parser.parse_args()
 
@@ -38,12 +36,16 @@ command_args = str_to_dict(" ".join(command).split(" ")[2:])
 
 # create experiment directory
 if args.experiment_dir is None:
+    # タイムスタンプ付きのサブディレクトリに固定
     args.experiment_dir = datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
     args.experiment_dir += f"-{command_args['--name']}"
-full_experiment_dir = os.path.join(args.base_experiment_dir, args.experiment_dir)
-os.makedirs(full_experiment_dir, exist_ok=True) # Moved to main_continual.py
+
+full_experiment_dir = os.path.join(args.checkpoint_root_dir, args.experiment_dir)
+os.makedirs(full_experiment_dir, exist_ok=True)
+
 print(f"Experiment directory: {full_experiment_dir}")
 shutil.copy(args.script, full_experiment_dir)
+
 # add experiment directory to the command
 command.extend(["--checkpoint_dir", full_experiment_dir])
 command = " ".join(command)
